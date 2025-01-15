@@ -7,7 +7,7 @@ FlaDE (Flame Detection Dataset based on Event Cameras) is a dataset designed for
  challenges, making them particularly well-suited for tasks like flame detection.
 
 <span id="animation"></span>
-![animation](https://raw.githubusercontent.com/KugaMaxx/cocoa-flade/master/assets/images/demonstration.gif "animation")
+![animation](https://raw.githubusercontent.com/KugaMaxx/cocoa-flade/master/assets/images/demonstration.webp "animation")
 
 This repository not only provides interfaces to help read event data and annotation
  files, but also includes detection examples, evaluation tools and visualization 
@@ -69,7 +69,7 @@ tags = dataset.get_tags(key='partition', query=['train', 'val'])  # returns 'tra
 ```
 
 **Some notes：**
-- If you encounter issues with the automatic download, please visit this [link](https://drive.google.com/file/d/1rLWpY98RdBYUQ7XnbdBPqWrrBf-GTeQ5/view?usp=drive_link) and extract the files into the `<file_path>` folder.
+- If you encounter issues with the automatic download, please visit this [link](https://drive.google.com/uc?id=1orF3i8lhT26fixFRavtphPOqgD4p4lyB) and extract the files into the `<file_path>` folder.
 - To use the COCO format of FlaDE, please check `<file_path>/FlaDE/flade_coco` after downloading.
 - For instructions on using evaluation and visualization tools, please refer to this [tutorial](./cocoa_flade/README.md).
 
@@ -115,4 +115,4 @@ For people who use , please use below citation.
 
 ## Acknowledgments
 
-We would like to thank [Xiang Xin](xinxiangscholar@163.com) for his valuable insights and support in this project.
+We would like to thank [Xiang Xin](mailto:xinxiangscholar@163.com) for his valuable insights and support in this project.
