@@ -7,5 +7,5 @@ setup(name='cocoa-flade',
       description='Official scripts for loading FlaDE dataset',
       author='KugaMaxx',
       author_email='KugaMaxx@outlook.com',
-      packages=['.'],
+      packages=['cocoa_flade'],
 )

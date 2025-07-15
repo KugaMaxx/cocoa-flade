@@ -43,7 +43,7 @@ pip install -r requirements.txt
 pip install external/dv-toolkit/.
 
 # install repo as cocoa_flade
-pip install cocoa_flade/.
+pip install .
 ```
 
 
