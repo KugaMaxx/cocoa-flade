@@ -1,0 +1,38 @@
+[build-system]
+requires = ["setuptools>=45", "wheel", "setuptools_scm>=6.2"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "cocoa-flade"
+version = "0.1.1"
+description = "Official scripts for loading FlaDE dataset"
+readme = "README.md"
+authors = [
+    {name = "KugaMaxx", email = "KugaMaxx@outlook.com"}
+]
+license = {file = "LICENSE"}
+requires-python = ">=3.8"
+classifiers = [
+    "Development Status :: 3 - Alpha",
+    "Intended Audience :: Developers",
+    "Intended Audience :: Science/Research",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.8",
+    "Programming Language :: Python :: 3.9",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Topic :: Scientific/Engineering",
+]
+dependencies = [
+    "gdown",
+]
+
+[project.urls]
+Homepage = "https://github.com/KugaMaxx/cocoa-flade"
+Repository = "https://github.com/KugaMaxx/cocoa-flade"
+
+[tool.setuptools]
+packages = ["cocoa_flade"]
+
+[tool.setuptools.package-data]
+cocoa_flade = ["**/*.py"]

@@ -36,11 +36,8 @@ Step 3: Install the necessary packages.
 # activate the virtual environment
 conda activate cocoa
 
-# install required dependencies
-pip install -r requirements.txt
-
 # install the dv-toolkit
-pip install external/dv-toolkit/.
+pip install git+https://github.com/KugaMaxx/yam-toolkit.git
 
 # install repo as cocoa_flade
 pip install .
