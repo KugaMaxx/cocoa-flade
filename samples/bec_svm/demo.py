@@ -1,18 +1,15 @@
 from pathlib import Path
 from dataset import FlaDE
 from sklearn.svm import SVC
-from collections import defaultdict
 from cocoa_flade.utils.benchmark import Timer, Metric
 from cocoa_flade.utils.draw import plot_projected_events, plot_detection_result, plot_rescaled_image
 
 from generator import BinaryEventContour
 from extractor import FeatExtractor
 
-import cv2
 import torch
 from torchvision.ops import box_iou
 from torchvision.ops.boxes import _box_xywh_to_xyxy
-import numpy as np
 
 
 root_path = Path(__file__).resolve().parent
