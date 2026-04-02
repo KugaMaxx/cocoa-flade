@@ -17,11 +17,7 @@ class FeatExtractor(extractor_ops.Converter):
         for box in bboxes:  
             feats.append(super().process(sample['events'], box))
 
-        # print(feats)
-        # print([self.extract_feats(sample, box) for box in bboxes])
-
         return feats
-        # return [self.extract_feats(sample, box) for box in bboxes]
 
     def extract_feats(self, sample, box):
         # rescale
@@ -89,14 +85,14 @@ class FeatExtractor(extractor_ops.Converter):
         ]) if len(buf_moments) > 1 else np.array([[0, 0]])
 
         feat = [
-            len(events) / (box_w * box_h),  # 事件输出率
-            box_w / box_h,          # 长宽比
-            area / (box_w * box_h), # 矩形度
-            4 * math.pi * area / arc_length ** 2, # 圆形度
-            abs(buf_areas[-1] - buf_areas[0]) * len(buf_areas) / sum(buf_areas), # 面积变化率
-            np.linalg.norm(buf_movements, axis=1).sum(), # 质心移动
-            len(corners) / max_corners, # features 角点
-            # (harris != 0).sum(), # harris 角点
+            len(events) / (box_w * box_h),                                       # Event output rate
+            box_w / box_h,                                                       # Aspect ratio
+            area / (box_w * box_h),                                              # Rectangularity
+            4 * math.pi * area / arc_length ** 2,                                # Circularity
+            abs(buf_areas[-1] - buf_areas[0]) * len(buf_areas) / sum(buf_areas), # Area change rate
+            np.linalg.norm(buf_movements, axis=1).sum(),                         # Centroid movement
+            len(corners) / max_corners,                                          # Feature corners
+            # (harris != 0).sum(),                                               # Harris corners
         ]
 
         return feat

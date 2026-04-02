@@ -2,14 +2,33 @@
 https://github.com/bald6354/aedat4tomat/tree/master
 """
 
+import argparse
 import scipy.io as sio
 import dv_toolkit as kit
 
-class MatFile: pass
+class MatFile: 
+    pass
+
+def parse_args():
+    parser = argparse.ArgumentParser(description="Convert .aedat4 to .mat")
+    parser.add_argument(
+        "-i", "--input",
+        required=True,
+        help="Input .aedat4 file path"
+    )
+    parser.add_argument(
+        "-o", "--output",
+        required=True,
+        help="Output .mat file path"
+    )
+    return parser.parse_args()
+
 
 if __name__ == '__main__':
+    args = parse_args()
+
     # load data
-    reader = kit.io.MonoCameraReader("/home/szd/workspace/tmp-flade/data/FlaDE/assets/F01_c02/record.aedat4")
+    reader = kit.io.MonoCameraReader(args.input)
     data, resolution = reader.loadData(), reader.getResolution("events")
 
     # meta
@@ -40,4 +59,4 @@ if __name__ == '__main__':
     # triggers
     aedat.triggers = MatFile()
 
-    sio.savemat('./record.mat', {'aedat': aedat})   
+    sio.savemat(args.output, {'aedat': aedat})

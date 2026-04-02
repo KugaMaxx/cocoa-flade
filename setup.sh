@@ -11,7 +11,7 @@ sudo apt-get install -y libboost-dev libopencv-dev libeigen3-dev libopenblas-dev
 
 # Install third-party dependencies for dv
 echo -e "\033[36mInstalling dv...\033[0m"
-sudo apt-get install -y boost-inivation libcaer-dev libfmt-dev liblz4-dev libzstd-dev libssl-dev
+sudo apt-get install -y boost-inivation libcaer-dev libfmt-dev liblz4-dev libzstd-dev libssl-dev libusb-1.0-0-dev
 sudo apt-get install -y dv-processing dv-runtime-dev
 
 # Initialize dv-toolkit submodule
