@@ -4,6 +4,7 @@ results/
 __pycache__/
 .vscode
 .history
+*egg-info/
 
 # Torch models
 *.pt

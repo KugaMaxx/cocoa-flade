@@ -86,16 +86,29 @@ class Metric(object):
         self._dts = defaultdict(list)
 
     def update(self, outputs, targets):
+        # convert tensors or numpy arrays to lists
+        def _to_list(x):
+            if isinstance(x, torch.Tensor):
+                return x.detach().cpu().tolist()
+            if isinstance(x, np.ndarray):
+                return x.tolist()
+            if isinstance(x, tuple):
+                return list(x)
+            return x
+
         # convert to pycoco type
         for output, target in zip(outputs, targets):
             # mapping to image id
             image_id = self.aet_ids[target['name']]
             
             # obtain basic info
-            width, height = target['resolution']
+            width, height = [float(v) for v in _to_list(target['resolution'])]
 
             # convert target
-            for tgt_cls, tgt_box in zip(target['labels'], target['bboxes']):
+            tgt_labels = _to_list(target['labels'])
+            tgt_bboxes = _to_list(target['bboxes'])
+
+            for tgt_cls, tgt_box in zip(tgt_labels, tgt_bboxes):
                 # index check
                 if tgt_cls not in self.cat_info.keys(): continue
 
@@ -115,7 +128,11 @@ class Metric(object):
                 })
 
             # convert output
-            for out_cls, out_prob, out_box in zip(output['labels'], output['scores'], output['bboxes']):
+            out_labels = _to_list(output['labels'])
+            out_scores = _to_list(output['scores'])
+            out_bboxes = _to_list(output['bboxes'])
+
+            for out_cls, out_prob, out_box in zip(out_labels, out_scores, out_bboxes):
                 # index check
                 if out_cls not in self.cat_info.keys(): continue
 
